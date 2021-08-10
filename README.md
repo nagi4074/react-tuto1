@@ -145,20 +145,20 @@ import React, { createContext, useContext } from 'react'
 
 const Context = createContext()
 
-const Mago = () => {
+const Grandson = () => {
   const { money } = useContext(Context)
   return <p>{money}円</p>
 }
 
-const Kodomo = () => <Mago />
+const Child = () => <Grandson />
 
-const Oya = () => {
+const Parent = () => {
   return (
     <Context.Provider value={{ money: 10000 }}>
-      <Kodomo />
+      <Child />
     </Context.Provider>
   )
 }
 
-export default Oya
+export default Parent
 ```
