@@ -7,6 +7,7 @@ import StateSample from './components/StateSample';
 import LifeCycle from './components/LifeCycle';
 import EventSample from './components/EventSample';
 import ListSample from './components/ListSample';
+import UseEffectSample from './components/UseEffectSample';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <LifeCycle />
       <EventSample />
       <ListSample />
+      <UseEffectSample />
     </div>
   );
 }
