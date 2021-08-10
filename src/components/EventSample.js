@@ -1,10 +1,3 @@
-/**
- * Reactでのイベント処理・イベントハンドラ
- * イベントはcamelCaseで命名(onClick等)
- * イベントハンドラには文字列ではなく関数を渡す
- * bindは記述の仕方によっては省略できる
- */
-
 import React from 'react';
 
 class EventSample extends React.Component {

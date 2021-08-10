@@ -1,70 +1,85 @@
-# Getting Started with Create React App
+# コンポーネント
+## Reactはコンポーネント（部品）単位で実装する
+### コンポーネント単位で管理することで以下のような利点がある
+* 再利用することができる
+* 変更してもバグが起きにくい
+### コンポーネントの種類は2種類ある
+* Functionalコンポーネント
+* クラスコンポーネント
+---
+# Functionalコンポーネント
+## 以下のようにアロー関数かfunction()で定義した関数を用いる
+### stateを持たず、引数にpropsを持つことが特徴
+```javascript
+import React from 'react'
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+const App = (props) => {
+  return (
+    <div>
+      <h1>Hello World</h1>
+    </div>
+  )
+}
+export default App
+```
+---
+# クラスコンポーネント
+## 以下のように記述する
+### stateを持ち、ライフサイクルがあることが特徴
+```javascript
+import React from 'react';
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: 'hoge'
+    }
+  }
+  render() {
+    return (
+      <div>
+        <h1>Hello World</h1>
+        <h1>{this.state.name}</h1>
+      </div>
+    );
+  }
+}
+export default App
+```
+---
+# props  
+## 親コンポーネントから子コンポーネントへ値を渡す仕組み  
+### 親：コンポーネントを利用する側  
+### 子：コンポーネントを利用される側  
+#### ※子から親へは渡せない  
+#### ※propsの値を動的に変更することはできない  
+---
+# state  
+## 各コンポーネント毎に持つ、コンポーネントの状態を管理する仕組み
+#### ※stateの値を更新する時は必ずsetState()経由で行うこと  
+---
+ # ライフサイクル
+ ## ライフサイクルは以下の三種類
+* Mounting(コンポーネントが生まれる時の期間)  
+componentDidmount(マウントが実装された直後に実行される)  
+componentWillMount(マウントが行われる直前に実行される、非推奨)  
+* Updating(コンポーネントが変更される期間)  
+componentWillReactiveProps(マウントされたコンポーネントが新しいpropsを受け取る前)    
+shouldComponentUpdate(新しいpropsやstateを受け取った時)  
+componentWillUpdate(新しいpropsやstateを受け取った後、レンダリングする直前)  
+componentDidUpdate(更新が行われた直後)
+* UnMounting(コンポーネントが破棄される期間)  
+componentWillUnmount(コンポーネントが破棄される直前)  
+---
+# イベント処理・イベントハンドラ
+### イベントはcamelCaseで命名(onClick等)
+### イベントハンドラには文字列ではなく関数を渡す
+### bindは記述の仕方によっては省略できる
+---
+# 配列
+## 配列の中身を一覧表示させる時はmapメソッドを用いる
+### {}内に記述した配列の要素が並べて表示される
+### mapメソッドが、戻り値として新しい配列を返す
+### {}内の配列を一覧表示するときには、key属性が必須
+#### 配列の要素が動的に変更された時に、変更前の配列の要素との対応関係をReact側が認識するため
