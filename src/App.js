@@ -5,6 +5,7 @@ import InputWithUseRef from './components/InputWithUseRef'
 import PropsSample from './components/PropsSample';
 import StateSample from './components/StateSample';
 import LifeCycle from './components/LifeCycle';
+import EventSample from './components/EventSample';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <PropsSample text="use props" />
       <StateSample />
       <LifeCycle />
+      <EventSample />
     </div>
   );
 }
