@@ -3,6 +3,7 @@ import './App.css';
 import InputWithUseState from './components/InputWithUseState'
 import InputWithUseRef from './components/InputWithUseRef'
 import PropsSample from './components/PropsSample';
+import StateSample from './components/StateSample';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <InputWithUseState />
       <InputWithUseRef />
       <PropsSample text="use props" />
+      <StateSample />
     </div>
   );
 }
