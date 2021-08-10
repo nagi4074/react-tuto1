@@ -4,6 +4,7 @@ import InputWithUseState from './components/InputWithUseState'
 import InputWithUseRef from './components/InputWithUseRef'
 import PropsSample from './components/PropsSample';
 import StateSample from './components/StateSample';
+import LifeCycle from './components/LifeCycle';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <InputWithUseRef />
       <PropsSample text="use props" />
       <StateSample />
+      <LifeCycle />
     </div>
   );
 }
